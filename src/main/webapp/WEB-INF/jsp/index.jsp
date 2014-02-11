@@ -3,9 +3,8 @@
 <html lang="en" ng-app="app">
 	<head>
 		<title></title>
-		<!-- 
-		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-		 -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		
 		<link href="css/ng-grid.css" rel="stylesheet">
 		<link href="css/news.css" rel="stylesheet">
 		

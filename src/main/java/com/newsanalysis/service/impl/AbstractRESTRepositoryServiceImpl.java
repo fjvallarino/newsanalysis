@@ -12,23 +12,19 @@ public abstract class AbstractRESTRepositoryServiceImpl<T, ID extends Serializab
 	 */
 	protected abstract JpaRepository<T, ID> getRepository();
 	
-	public <S extends T> S save(S entity) {
+	public <S extends T> S create(S entity) {
 		return getRepository().save(entity);
 	}
 	
-	public <S extends T> Iterable<S> save(Iterable<S> entities) {
-		return getRepository().save(entities);
+	public <S extends T> S update(S entity) {
+		return getRepository().save(entity);
 	}
 	
-	public T findOne(ID id) {
+	public T find(ID id) {
 		return getRepository().findOne(id);
 	}
 	
 	public Iterable<T> findAll() {
-		return getRepository().findAll();
-	}
-	
-	public Iterable<T> findAll(Iterable<ID> ids) {
 		return getRepository().findAll();
 	}
 	

@@ -20,12 +20,17 @@ public abstract class AbstractRESTController<T, ID extends Serializable> {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody T query(@PathVariable ID id) {
-		return getRESTService().findOne(id);
+		return getRESTService().find(id);
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public @ResponseBody T save(@RequestBody T entity) {
-		return getRESTService().save(entity);
+	public @ResponseBody T create(@RequestBody T entity) {
+		return getRESTService().create(entity);
+	}
+	
+	@RequestMapping(value = "", method = RequestMethod.PUT)
+	public @ResponseBody T update(@RequestBody T entity) {
+		return getRESTService().update(entity);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
