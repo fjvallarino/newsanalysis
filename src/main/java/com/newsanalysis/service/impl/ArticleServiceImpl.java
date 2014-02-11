@@ -1,19 +1,20 @@
 package com.newsanalysis.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
+
 import com.newsanalysis.model.Article;
 import com.newsanalysis.repository.ArticleRepository;
 import com.newsanalysis.service.ArticleService;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class ArticleServiceImpl extends AbstractRESTRepositoryServiceImpl<Article, Long> implements ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
-	
+
 	@Override
-	public List<Article> getArticles() {
-		return articleRepository.findAll();
+	protected JpaRepository<Article, Long> getRepository() {
+		return articleRepository;
 	}
 }

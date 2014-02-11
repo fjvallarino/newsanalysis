@@ -19,6 +19,6 @@ public class ConfigController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getMain() {
-		return new ModelAndView("main");
+		return new ModelAndView("index");
 	}
 }
