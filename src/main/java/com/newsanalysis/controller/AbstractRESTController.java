@@ -28,13 +28,13 @@ public abstract class AbstractRESTController<T, ID extends Serializable> {
 		return getRESTService().create(entity);
 	}
 	
-	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public @ResponseBody T update(@RequestBody T entity) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+	public @ResponseBody T update(@PathVariable ID id, @RequestBody T entity) {
 		return getRESTService().update(entity);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable ID id) {
+	public @ResponseBody void delete(@PathVariable ID id) {
 		getRESTService().delete(id);
 	}
 }

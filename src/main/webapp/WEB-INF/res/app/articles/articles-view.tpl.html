@@ -5,21 +5,21 @@
         <div class="control-group">
             <label class="control-label" for="headline">Headline:</label>
             <div class="controls">
-                <input type="text" id="headline" ng-model="article.headline"/>
+                <span>{{article.headline}}</span>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="author">Author:</label>
             <div class="controls">
-                <input type="text" id="author" ng-model="article.author"/>
+            	<span>{{article.author}}</span>
             </div>
         </div>
         <div class="control-group">
         	<br>
             <div class="controls">
-            	<a ng-click="create()" ng-show="isCreate" class="btn btn-sm btn-success">Create</a>
-                <a ng-click="update()" ng-show="!isCreate" class="btn btn-sm btn-success">Update</a>
-                <a ng-click="cancel()" class="btn btn-sm btn-primary">Cancel</a>
+            	<a ng-click="remove()" ng-show="isRemove" class="btn btn-sm btn-danger">Confirm</a>
+                <a ng-click="cancel()" ng-show="isRemove" class="btn btn-sm btn-primary">Cancel</a>
+                <a ng-click="cancel()" ng-show="!isRemove" class="btn btn-sm btn-primary">Close</a>
             </div>
         </div>
     </form>
