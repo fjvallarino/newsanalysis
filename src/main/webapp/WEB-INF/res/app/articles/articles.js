@@ -1,10 +1,10 @@
-var articlesModule = angular.module('articles', ['ngRoute', 'ngGrid', 'rest.resources']);
+var artMod = angular.module('articles', ['ngRoute', 'ngGrid', 'rest.resources']);
 
-articlesModule.loadArticle = function($route, Article) {
+artMod.loadArticle = function($route, Article) {
 	return Article.get({id: $route.current.params.id});
 };
 
-articlesModule.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+artMod.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider.when('/articles', {
 		templateUrl: 'app/articles/articles-list.tpl.html',
 		controller: 'ArticlesListCtrl',
@@ -24,7 +24,7 @@ articlesModule.config(['$routeProvider', '$locationProvider', function($routePro
 		templateUrl: 'app/articles/articles-edit.tpl.html',
 		controller: 'ArticlesEditCtrl',
 		resolve: { 
-			article: articlesModule.loadArticle
+			article: artMod.loadArticle
 		}
 	});
 	
@@ -32,7 +32,7 @@ articlesModule.config(['$routeProvider', '$locationProvider', function($routePro
 		templateUrl: 'app/articles/articles-view.tpl.html',
 		controller: 'ArticlesViewCtrl',
 		resolve: { 
-			article: articlesModule.loadArticle
+			article: artMod.loadArticle
 		}
 	});
 	
@@ -40,12 +40,12 @@ articlesModule.config(['$routeProvider', '$locationProvider', function($routePro
 		templateUrl: 'app/articles/articles-view.tpl.html',
 		controller: 'ArticlesRemoveCtrl',
 		resolve: { 
-			article: articlesModule.loadArticle
+			article: artMod.loadArticle
 		}
 	});
 }]);
 
-articlesModule.controller('ArticlesListCtrl', ['$scope', '$location', 'articleList', function ($scope, $location, articleList) {
+artMod.controller('ArticlesListCtrl', ['$scope', '$location', 'articleList', function ($scope, $location, articleList) {
 	var listActionButtons = createListViewButton('viewArticle(row.entity)') + createListEditButton('editArticle(row.entity)') + createListRemoveButton('removeArticle(row.entity)');
 
 	$scope.articles = articleList;
@@ -76,7 +76,7 @@ articlesModule.controller('ArticlesListCtrl', ['$scope', '$location', 'articleLi
 	};	
 }]);
 
-articlesModule.controller('ArticlesCreateCtrl', ['$scope', '$location', 'Article', function ($scope, $location, Article) {
+artMod.controller('ArticlesCreateCtrl', ['$scope', '$location', 'Article', function ($scope, $location, Article) {
 	$scope.article = {};
 	$scope.isCreate = true;
 	
@@ -93,7 +93,7 @@ articlesModule.controller('ArticlesCreateCtrl', ['$scope', '$location', 'Article
 	};
 }]);
 
-articlesModule.controller('ArticlesEditCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
+artMod.controller('ArticlesEditCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
 	$scope.article = article;
 	$scope.isCreate = false;
 	
@@ -110,7 +110,7 @@ articlesModule.controller('ArticlesEditCtrl', ['$scope', '$location', 'Article',
 	};
 }]);
 
-articlesModule.controller('ArticlesViewCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
+artMod.controller('ArticlesViewCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
 	$scope.article = article;
 	$scope.isRemove = false;
 	
@@ -123,7 +123,7 @@ articlesModule.controller('ArticlesViewCtrl', ['$scope', '$location', 'Article',
 	};
 }]);
 
-articlesModule.controller('ArticlesRemoveCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
+artMod.controller('ArticlesRemoveCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
 	$scope.article = article;
 	$scope.isRemove = true;
 	

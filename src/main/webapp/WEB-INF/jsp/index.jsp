@@ -20,6 +20,7 @@
 		<script src="app/app.js"></script>
 		<script src="app/resources.js"></script>
 		<script src="app/articles/articles.js"></script>
+		<script src="app/articles-search-criteria/articles-search-criteria.js"></script>
 	</head>
 
 	<body ng-controller="AppCtrl">

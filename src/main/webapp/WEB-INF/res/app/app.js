@@ -1,7 +1,8 @@
 var appModule = angular.module('app', [
 	'ngRoute',
 	'ngResource',
-	'articles'
+	'articles',
+	'articlesSearchCriteria',
 ]);
 
 // Routes configuration

@@ -1,0 +1,48 @@
+<div class="container">
+	<h2>Article search criteria detail</h2>
+
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Name:</label>
+				<input type="text" class="form-control" ng-model="articleSearchCriteria.name" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label class="control-label">Article date from:</label>
+				<p class="input-group">
+					<input type="text" class="form-control" ng-model="articleSearchCriteria.articleDateFrom" is-open="openedArticleDateFrom" datepicker-options="dateOptions" datepicker-popup="dd-MMMM-yyyy" />
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-click="openArticleDateFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">Article date to:</label>
+				<p class="input-group">
+					<input type="text" class="form-control" ng-model="articleSearchCriteria.articleDateTo" is-open="openedArticleDateTo" datepicker-options="dateOptions" datepicker-popup="dd-MMMM-yyyy" />
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-click="openArticleDateTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Keywords:</label>
+				<div class="controls">
+					<textarea rows="5" cols="40" class="form-control" ng-model="articleSearchCriteria.keywords"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<br>
+			<div class="controls">
+				<a ng-click="create()" ng-show="isCreate" class="btn btn-sm btn-success">Create</a>
+				<a ng-click="update()" ng-show="!isCreate" class="btn btn-sm btn-success">Update</a>
+				<a ng-click="cancel()" class="btn btn-sm btn-primary">Cancel</a>
+			</div>
+		</div>
+	</form>
+</div>
