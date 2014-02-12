@@ -1,7 +1,5 @@
 var ascmod = angular.module('articlesSearchCriteria', ['ngRoute', 'ngGrid', 'rest.resources', 'ui.bootstrap']);
 
-ascmod.basePath = '/articles-search-criteria';
-
 ascmod.loadArticleSearchCriteria = function($route, ArticleSearchCriteria) {
 	return ArticleSearchCriteria.get({id: $route.current.params.id});
 };
@@ -78,37 +76,6 @@ ascmod.controller('ArticlesSearchCriteriaListCtrl', ['$scope', '$location', 'art
 	$scope.remove = function(articleSearchCriteria) {
 		$location.path('/articles-search-criteria/remove/' + articleSearchCriteria.id);
 	};	
-}]);
-
-ascmod.factory('ArticlesSearchCriteriaService', ['$location', function($location) {
-	return {
-		backToList: function() {
-			$location.path('/articles-search-criteria');
-		},
-		
-		cancel: function() {
-			$scope.backToList();
-		},
-
-		dateOptions: {
-			'year-format': "'yyyy'",
-			'starting-day': 1
-		},
-		
-		openArticleDateFrom: function($event) {
-			$event.preventDefault();
-			$event.stopPropagation();
-			
-			$scope.openedArticleDateFrom = true;
-		},
-		
-		openArticleDateTo: function($event) {
-			$event.preventDefault();
-			$event.stopPropagation();
-			
-			$scope.openedArticleDateTo = true;
-		}		
-	};
 }]);
 
 ascmod.controller('ArticlesSearchCriteriaCreateCtrl', ['$scope', '$location', 'ArticleSearchCriteria', function ($scope, $location, ArticleSearchCriteria) {

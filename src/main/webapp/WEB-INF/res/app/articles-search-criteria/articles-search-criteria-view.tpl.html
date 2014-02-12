@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>Article search criteria detail</h1>
+	<h2>Article search criteria detail</h2>
 
 	<form novalidate="novalidate" class="form-horizontal">
 		<div class="row">
@@ -10,17 +10,17 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<label class="control-label" for="articleDateFrom">Article date from:</label>
+				<label class="control-label">Article date from:</label>
 				<div>{{articleSearchCriteria.articleDateFrom | date: 'dd/MM/yyyy'}}</div>
 			</div>
 			<div class="col-md-3">
-				<label class="control-label" for="articleDateTo">Article date to:</label>
+				<label class="control-label">Article date to:</label>
 				<div>{{articleSearchCriteria.articleDateTo | date: 'dd/MM/yyyy'}}</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<label class="control-label" for="author">Keywords:</label>
+				<label class="control-label">Keywords:</label>
 				<div class="controls">
 					<span>{{articleSearchCriteria.keywords}}</span>
 				</div>

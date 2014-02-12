@@ -1,10 +1,10 @@
-var artMod = angular.module('articles', ['ngRoute', 'ngGrid', 'rest.resources']);
+var artmod = angular.module('articles', ['ngRoute', 'ngGrid', 'rest.resources', 'ui.bootstrap']);
 
-artMod.loadArticle = function($route, Article) {
+artmod.loadArticle = function($route, Article) {
 	return Article.get({id: $route.current.params.id});
 };
 
-artMod.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+artmod.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider.when('/articles', {
 		templateUrl: 'app/articles/articles-list.tpl.html',
 		controller: 'ArticlesListCtrl',
@@ -24,7 +24,7 @@ artMod.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 		templateUrl: 'app/articles/articles-edit.tpl.html',
 		controller: 'ArticlesEditCtrl',
 		resolve: { 
-			article: artMod.loadArticle
+			article: artmod.loadArticle
 		}
 	});
 	
@@ -32,7 +32,7 @@ artMod.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 		templateUrl: 'app/articles/articles-view.tpl.html',
 		controller: 'ArticlesViewCtrl',
 		resolve: { 
-			article: artMod.loadArticle
+			article: artmod.loadArticle
 		}
 	});
 	
@@ -40,13 +40,13 @@ artMod.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 		templateUrl: 'app/articles/articles-view.tpl.html',
 		controller: 'ArticlesRemoveCtrl',
 		resolve: { 
-			article: artMod.loadArticle
+			article: artmod.loadArticle
 		}
 	});
 }]);
 
-artMod.controller('ArticlesListCtrl', ['$scope', '$location', 'articleList', function ($scope, $location, articleList) {
-	var listActionButtons = createListViewButton('viewArticle(row.entity)') + createListEditButton('editArticle(row.entity)') + createListRemoveButton('removeArticle(row.entity)');
+artmod.controller('ArticlesListCtrl', ['$scope', '$location', 'articleList', function ($scope, $location, articleList) {
+	var listActionButtons = createListViewButton('view(row.entity)') + createListEditButton('edit(row.entity)') + createListRemoveButton('remove(row.entity)');
 
 	$scope.articles = articleList;
 	
@@ -59,24 +59,24 @@ artMod.controller('ArticlesListCtrl', ['$scope', '$location', 'articleList', fun
 		]
 	};
 	
-	$scope.createArticle = function() {
+	$scope.create = function() {
 		$location.path('/articles/new');
 	};	
 	
-	$scope.editArticle = function(article) {
+	$scope.edit = function(article) {
 		$location.path('/articles/edit/' + article.id);
 	};	
 	
-	$scope.viewArticle = function(article) {
+	$scope.view = function(article) {
 		$location.path('/articles/view/' + article.id);
 	};	
 	
-	$scope.removeArticle = function(article) {
+	$scope.remove = function(article) {
 		$location.path('/articles/remove/' + article.id);
 	};	
 }]);
 
-artMod.controller('ArticlesCreateCtrl', ['$scope', '$location', 'Article', function ($scope, $location, Article) {
+artmod.controller('ArticlesCreateCtrl', ['$scope', '$location', 'Article', function ($scope, $location, Article) {
 	$scope.article = {};
 	$scope.isCreate = true;
 	
@@ -91,9 +91,28 @@ artMod.controller('ArticlesCreateCtrl', ['$scope', '$location', 'Article', funct
 	$scope.backToList = function() {
 		$location.path('/articles');
 	};
+
+	$scope.dateOptions = {
+		'year-format': "'yyyy'",
+		'starting-day': 1
+	};
+	
+	$scope.openArticleDate = function($event) {
+		$event.preventDefault();
+		$event.stopPropagation();
+		
+		$scope.openedArticleDate = true;
+	};
+	
+	$scope.openDetectedDate = function($event) {
+		$event.preventDefault();
+		$event.stopPropagation();
+		
+		$scope.openedDetectedDate = true;
+	};
 }]);
 
-artMod.controller('ArticlesEditCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
+artmod.controller('ArticlesEditCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
 	$scope.article = article;
 	$scope.isCreate = false;
 	
@@ -108,9 +127,28 @@ artMod.controller('ArticlesEditCtrl', ['$scope', '$location', 'Article', 'articl
 	$scope.backToList = function() {
 		$location.path('/articles');
 	};
+
+	$scope.dateOptions = {
+		'year-format': "'yyyy'",
+		'starting-day': 1
+	};
+	
+	$scope.openArticleDate = function($event) {
+		$event.preventDefault();
+		$event.stopPropagation();
+		
+		$scope.openedArticleDate = true;
+	};
+	
+	$scope.openDetectedDate = function($event) {
+		$event.preventDefault();
+		$event.stopPropagation();
+		
+		$scope.openedDetectedDate = true;
+	};
 }]);
 
-artMod.controller('ArticlesViewCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
+artmod.controller('ArticlesViewCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
 	$scope.article = article;
 	$scope.isRemove = false;
 	
@@ -123,7 +161,7 @@ artMod.controller('ArticlesViewCtrl', ['$scope', '$location', 'Article', 'articl
 	};
 }]);
 
-artMod.controller('ArticlesRemoveCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
+artmod.controller('ArticlesRemoveCtrl', ['$scope', '$location', 'Article', 'article', function ($scope, $location, Article, article) {
 	$scope.article = article;
 	$scope.isRemove = true;
 	

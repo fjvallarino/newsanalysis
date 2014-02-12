@@ -3,6 +3,7 @@ package com.newsanalysis.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Article implements Serializable {
 	private String author;
 	private String headline;
 	private String lead;
+	@Column(columnDefinition = "text")
 	private String story;
 	private String referenceToSource;
 	@Temporal(TemporalType.DATE)

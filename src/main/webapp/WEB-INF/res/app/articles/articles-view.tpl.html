@@ -1,26 +1,60 @@
 <div class="container">
-    <h1>Article detail</h1>
+	<h2>Article detail</h2>
 
-    <form novalidate="novalidate" class="form-horizontal">
-        <div class="control-group">
-            <label class="control-label" for="headline">Headline:</label>
-            <div class="controls">
-                <span>{{article.headline}}</span>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="author">Author:</label>
-            <div class="controls">
-            	<span>{{article.author}}</span>
-            </div>
-        </div>
-        <div class="control-group">
-        	<br>
-            <div class="controls">
-            	<a ng-click="remove()" ng-show="isRemove" class="btn btn-sm btn-danger">Confirm</a>
-                <a ng-click="cancel()" ng-show="isRemove" class="btn btn-sm btn-primary">Cancel</a>
-                <a ng-click="cancel()" ng-show="!isRemove" class="btn btn-sm btn-primary">Close</a>
-            </div>
-        </div>
-    </form>
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="row">
+			<div class="col-md-3">
+				<label class="control-label">Source:</label>
+				<div>{{article.source}}</div>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">Author:</label>
+				<div>{{article.author}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Headline:</label>
+				<div>{{article.headline}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Lead:</label>
+				<div>{{article.lead}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Reference to source:</label>
+				<div>{{article.referenceToSource}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label class="control-label">Article date:</label>
+				<div>{{article.articleDate | date: 'dd/MM/yyyy'}}</div>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">Article detected:</label>
+				<div>{{article.articleDetected | date: 'dd/MM/yyyy'}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Story:</label>
+				<div class="controls">
+					<span>{{article.story}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<br>
+			<div class="controls">
+				<a ng-click="remove()" ng-show="isRemove" class="btn btn-sm btn-danger">Confirm</a>
+				<a ng-click="cancel()" ng-show="isRemove" class="btn btn-sm btn-primary">Cancel</a>
+				<a ng-click="cancel()" ng-show="!isRemove" class="btn btn-sm btn-primary">Close</a>
+			</div>
+		</div>
+	</form>
 </div>
