@@ -21,8 +21,10 @@ public class ArticleController extends AbstractRESTController<Article, Long> {
 	@Autowired
 	private ArticleService articleService;
 	
-	@RequestMapping(value = "/search", method = RequestMethod.PUT)
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<Article> searchArticles(@RequestBody ArticleSearchDTO articleSearchDTO) {
+		System.out.println(articleSearchDTO.getArticleSearchCriteriaId());
+		
 		return new ArrayList<Article>();
 	}
 

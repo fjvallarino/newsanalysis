@@ -1,39 +1,46 @@
 <div class="container">
-	<h2>Article detail</h2>
-
-	<form name="articleForm" class="form-horizontal">
+	<div class="row section-header">
+		<div class="col-md-12">
+			<h3>Article detail</h3>
+		</div>
+	</div>
+	
+	<form name="artForm" class="form-horizontal">
 		<div class="row">
-			<div class="col-md-3" ng-class="{ 'has-error': articleForm.source.$dirty && articleForm.source.$invalid }">
+			<div class="col-md-3" ng-class="{ 'has-error': artForm.source.$dirty && artForm.source.$invalid }">
 				<label class="control-label">Source:</label>
 				<input type="text" class="form-control" name="source" ng-model="article.source" required/>
+				<div class="help-block" ng-show="artForm.source.$dirty && artForm.source.$error.required">Required</div>
 			</div>
-			<div class="col-md-3" ng-class="{ 'has-error': articleForm.author.$invalid }">
+			<div class="col-md-3" ng-class="{ 'has-error': artForm.author.$dirty && artForm.author.$invalid }">
 				<label class="control-label">Author:</label>
 				<input type="text" class="form-control" name="author" ng-model="article.author" required/>
+				<div class="help-block" ng-show="artForm.author.$dirty && artForm.author.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6" ng-class="{ 'has-error': articleForm.headline.$dirty && articleForm.headline.$invalid }">
+			<div class="col-md-6" ng-class="{ 'has-error': artForm.headline.$dirty && artForm.headline.$invalid }">
 				<label class="control-label">Headline:</label>
 				<input type="text" class="form-control" name="headline" ng-model="article.headline" required/>
-				<div class="help-block" ng-show="articleForm.headline.$error.required">Required</div>
+				<div class="help-block" ng-show="artForm.headline.$dirty && artForm.headline.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6" ng-class="{ 'has-error': articleForm.lead.$invalid }">
+			<div class="col-md-6" ng-class="{ 'has-error': artForm.lead.$dirty && artForm.lead.$invalid }">
 				<label class="control-label">Lead:</label>
 				<input type="text" class="form-control" name="lead" ng-model="article.lead" required/>
-				<div class="help-block" ng-show="articleForm.lead.$error.required">Required</div>
+				<div class="help-block" ng-show="artForm.lead.$dirty && artForm.lead.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6" ng-class="{ 'has-error': articleForm.referenceToSource.$dirty && articleForm.referenceToSource.$invalid }">
+			<div class="col-md-6" ng-class="{ 'has-error': artForm.referenceToSource.$dirty && artForm.referenceToSource.$invalid }">
 				<label class="control-label">Reference to source:</label>
 				<input type="text" class="form-control" name="referenceToSource" ng-model="article.referenceToSource" required/>
+				<div class="help-block" ng-show="artForm.referenceToSource.$dirty && artForm.referenceToSource.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3" ng-class="{ 'has-error': articleForm.articleDate.$dirty && articleForm.articleDate.$invalid }">
+			<div class="col-md-3" ng-class="{ 'has-error': artForm.articleDate.$dirty && artForm.articleDate.$invalid }">
 				<label class="control-label">Article date:</label>
 				<p class="input-group">
 					<input type="text" class="form-control" name="articleDate" ng-model="article.articleDate" is-open="openedArticleDate" datepicker-options="dateOptions" datepicker-popup="dd-MMMM-yyyy" required/>
@@ -41,33 +48,33 @@
 						<button class="btn btn-default" ng-click="openArticleDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					</span>
 				</p>
+				<div class="help-block" ng-show="artForm.articleDate.$dirty && artForm.articleDate.$error.required">Required</div>
 			</div>
-			<div class="col-md-3" ng-class="{ 'has-error': articleForm.detectedDate.$dirty && articleForm.detectedDate.$invalid }">
+			<div class="col-md-3" ng-class="{ 'has-error': artForm.detectedDate.$dirty && artForm.detectedDate.$invalid }">
 				<label class="control-label">Detected date:</label>
 				<p class="input-group">
 					<input type="text" class="form-control" name="detectedDate" ng-model="article.detectedDate" is-open="openedDetectedDate" datepicker-options="dateOptions" datepicker-popup="dd-MMMM-yyyy" required/>
 					<span class="input-group-btn">
 						<button class="btn btn-default" ng-click="openDetectedDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					</span>
+					<div class="help-block" ng-show="artForm.detectedDate.$dirty && artForm.detectedDate.$error.required">Required</div>
 				</p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6" ng-class="{ 'has-error': articleForm.story.$dirty && articleForm.story.$invalid }">
+			<div class="col-md-6" ng-class="{ 'has-error': artForm.story.$dirty && artForm.story.$invalid }">
 				<label class="control-label">Story:</label>
 				<div class="controls">
 					<textarea rows="5" cols="40" class="form-control" name="story" ng-model="article.story" required></textarea>
 				</div>
-				<!-- 
-				<div class="help-block" ng-show="articleForm.story.$error.required">Required</div>
-				 -->
+				<div class="help-block" ng-show="artForm.story.$dirty && artForm.story.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="control-group">
 			<br>
 			<div class="controls">
-				<a ng-click="create()" ng-show="isCreate" ng-disabled="articleForm.$invalid" class="btn btn-sm btn-success">Create</a>
-				<a ng-click="update()" ng-show="!isCreate" ng-disabled="articleForm.$invalid" class="btn btn-sm btn-success">Update</a>
+				<a ng-click="create()" ng-show="isCreate" ng-disabled="artForm.$invalid" class="btn btn-sm btn-success">Create</a>
+				<a ng-click="update()" ng-show="!isCreate" ng-disabled="artForm.$invalid" class="btn btn-sm btn-success">Update</a>
 				<a ng-click="cancel()" class="btn btn-sm btn-primary">Cancel</a>
 			</div>
 		</div>

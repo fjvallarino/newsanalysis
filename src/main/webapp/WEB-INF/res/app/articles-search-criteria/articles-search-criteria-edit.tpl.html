@@ -1,11 +1,16 @@
 <div class="container">
-	<h2>Article search criteria detail</h2>
-
-	<form novalidate="novalidate" class="form-horizontal">
+	<div class="row section-header">
+		<div class="col-md-12">
+			<h3>Article search criteria detail</h3>
+		</div>
+	</div>
+	
+	<form name="ascForm" class="form-horizontal">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6" ng-class="{ 'has-error': ascForm.name.$dirty && ascForm.name.$invalid }">
 				<label class="control-label">Name:</label>
-				<input type="text" class="form-control" ng-model="articleSearchCriteria.name" />
+				<input type="text" class="form-control" name="name" ng-model="articleSearchCriteria.name" required />
+				<div class="help-block" ng-show="ascForm.name.$dirty && ascForm.name.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="row">
@@ -39,8 +44,8 @@
 		<div class="control-group">
 			<br>
 			<div class="controls">
-				<a ng-click="create()" ng-show="isCreate" class="btn btn-sm btn-success">Create</a>
-				<a ng-click="update()" ng-show="!isCreate" class="btn btn-sm btn-success">Update</a>
+				<a ng-click="create()" ng-show="isCreate" ng-disabled="ascForm.$invalid" class="btn btn-sm btn-success">Create</a>
+				<a ng-click="update()" ng-show="!isCreate" ng-disabled="ascForm.$invalid" class="btn btn-sm btn-success">Update</a>
 				<a ng-click="cancel()" class="btn btn-sm btn-primary">Cancel</a>
 			</div>
 		</div>

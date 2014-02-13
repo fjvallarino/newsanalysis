@@ -75,7 +75,7 @@ ascmod.controller('ArticlesSearchCriteriaListCtrl', ['$scope', '$location', 'art
 	
 	$scope.remove = function(articleSearchCriteria) {
 		$location.path('/articles-search-criteria/remove/' + articleSearchCriteria.id);
-	};	
+	};
 }]);
 
 ascmod.controller('ArticlesSearchCriteriaCreateCtrl', ['$scope', '$location', 'ArticleSearchCriteria', function ($scope, $location, ArticleSearchCriteria) {

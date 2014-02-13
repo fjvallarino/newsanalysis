@@ -1,7 +1,38 @@
-<div class="span6">
-	<div class="articlesGridStyle" ng-grid="articlesGridOptions"></div>
+<div class="container">
+	<div class="row section-header">
+		<div class="col-md-12">
+			<h3>Articles</h3>
+		</div>
+	</div>
 	
-	<br>
+	<div class="row">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-6">
+			<label class="control-label">Search criteria:</label>
+			<select ui-select2="{ allowClear: true }" ng-model="searchCriteria.articleSearchCriteriaId" class="form-control" data-placeholder="Enter search criteria">
+			    <option value=""></option>
+			    <option ng-repeat="asc in articleSearchCriteriaList" value="{{asc.id}}">{{asc.name}}</option>
+			</select>
+		</div>
+	</div>
 	
-	<a ng-click="create()" class="btn btn-primary btn-sm">Create</a>
+	<div class="row">
+		<div class="col-md-12">
+			<span>&nbsp;</span>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="articles-grid-style" ng-grid="articlesGridOptions"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<br>
+			
+			<a ng-click="create()" class="btn btn-primary btn-sm">Create</a>
+		</div>
+	</div>
 </div>

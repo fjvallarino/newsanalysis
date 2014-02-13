@@ -18,13 +18,13 @@ appModule.controller('AppCtrl', function($scope) {
 });
 
 function createListViewButton(action) {
-	return '<button type="button" class="btn btn-primary btn-xs btnListAction" ng-click="' + action + '">View</button>';
+	return '<button type="button" class="btn btn-primary btn-xs btn-list-action" ng-click="' + action + '">View</button>';
 }
 
 function createListEditButton(action) {
-	return '<button type="button" class="btn btn-success btn-xs btnListAction" ng-click="' + action + '">Edit</button>';
+	return '<button type="button" class="btn btn-success btn-xs btn-list-action" ng-click="' + action + '">Edit</button>';
 }
 
 function createListRemoveButton(action) {
-	return '<button type="button" class="btn btn-danger btn-xs btnListAction" ng-click="' + action + '">Remove</button>';
+	return '<button type="button" class="btn btn-danger btn-xs btn-list-action" ng-click="' + action + '">Remove</button>';
 }

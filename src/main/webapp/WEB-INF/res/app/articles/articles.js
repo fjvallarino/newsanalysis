@@ -1,4 +1,4 @@
-var artmod = angular.module('articles', ['ngRoute', 'ngGrid', 'rest.resources', 'ui.bootstrap']);
+var artmod = angular.module('articles', ['ngRoute', 'ngGrid', 'rest.resources', 'ui.bootstrap', 'ui.select2']);
 
 artmod.loadArticle = function($route, Article) {
 	return Article.get({id: $route.current.params.id});
@@ -11,6 +11,10 @@ artmod.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 		resolve: { 
 			articleList: function($route, Article) {
 				return Article.query();
+			},
+			
+			articleSearchCriteriaList: function($route, ArticleSearchCriteria) {
+				return ArticleSearchCriteria.query();
 			}
 		}
 	});
@@ -45,10 +49,18 @@ artmod.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 	});
 }]);
 
-artmod.controller('ArticlesListCtrl', ['$scope', '$location', 'articleList', function ($scope, $location, articleList) {
+artmod.controller('ArticlesListCtrl', ['$scope', '$location', 'ArticleSearch', 'articleList', 'articleSearchCriteriaList', function ($scope, $location, ArticleSearch, articleList, articleSearchCriteriaList) {
 	var listActionButtons = createListViewButton('view(row.entity)') + createListEditButton('edit(row.entity)') + createListRemoveButton('remove(row.entity)');
 
 	$scope.articles = articleList;
+	$scope.articleSearchCriteriaList = articleSearchCriteriaList;
+	$scope.searchCriteria = { articleSearchCriteriaId: null };
+	
+	$scope.$watch('searchCriteria.articleSearchCriteriaId', function(newValue, oldValue) {
+		if(newValue != oldValue) {
+			$scope.articles = ArticleSearch.search($scope.searchCriteria);
+		}
+	});
 	
 	$scope.articlesGridOptions = { 
 		data: 'articles',
