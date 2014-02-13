@@ -1,6 +1,5 @@
 package com.newsanalysis.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,7 @@ public class ArticleController extends AbstractRESTController<Article, Long> {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<Article> searchArticles(@RequestBody ArticleSearchDTO articleSearchDTO) {
-		System.out.println(articleSearchDTO.getArticleSearchCriteriaId());
-		
-		return new ArrayList<Article>();
+		return articleService.searchArticles(articleSearchDTO.getArticleSearchCriteriaId());
 	}
 
 	@Override

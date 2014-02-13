@@ -66,8 +66,11 @@ artmod.controller('ArticlesListCtrl', ['$scope', '$location', 'ArticleSearch', '
 		data: 'articles',
 		multiSelect: false,
 		columnDefs: [
-			{ field: 'headline', displayName: 'Headline' },
-			{ displayName: '', cellTemplate: listActionButtons }
+			{ field: 'source', displayName: 'Source', width: '10%' },
+			{ field: 'author', displayName: 'Author', width: '20%' },
+			{ field: 'headline', displayName: 'Headline', width: '45%' },
+			{ field: 'articleDate | date: "dd/MM/yyyy"', displayName: 'Article date', width: '10%' },
+			{ displayName: '', cellTemplate: listActionButtons, width: '15%' }
 		]
 	};
 	

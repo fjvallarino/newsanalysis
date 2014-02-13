@@ -28,7 +28,7 @@
 		<div class="row">
 			<div class="col-md-6" ng-class="{ 'has-error': artForm.lead.$dirty && artForm.lead.$invalid }">
 				<label class="control-label">Lead:</label>
-				<input type="text" class="form-control" name="lead" ng-model="article.lead" required/>
+				<textarea rows="2" cols="40" class="form-control" name="lead" ng-model="article.lead" required></textarea>
 				<div class="help-block" ng-show="artForm.lead.$dirty && artForm.lead.$error.required">Required</div>
 			</div>
 		</div>

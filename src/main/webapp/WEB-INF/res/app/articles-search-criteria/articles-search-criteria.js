@@ -54,10 +54,11 @@ ascmod.controller('ArticlesSearchCriteriaListCtrl', ['$scope', '$location', 'art
 		data: 'articlesSearchCriteria',
 		multiSelect: false,
 		columnDefs: [
-			{ field: 'name', displayName: 'Name' },
-			{ field: 'articleDateFrom | date: "dd/MM/yyyy"', displayName: 'Article date from' },
-			{ field: 'articleDateTo | date: "dd/MM/yyyy"', displayName: 'Article date to' },
-			{ displayName: '', cellTemplate: listActionButtons }
+			{ field: 'name', displayName: 'Name', width: '15%' },
+			{ field: 'articleDateFrom | date: "dd/MM/yyyy"', displayName: 'Article date from', width: '15%' },
+			{ field: 'articleDateTo | date: "dd/MM/yyyy"', displayName: 'Article date to', width: '15%' },
+			{ field: 'keywords', displayName: 'Keywords', width: '40%' },
+			{ displayName: '', cellTemplate: listActionButtons, width: '15%' }
 		]
 	};
 	
